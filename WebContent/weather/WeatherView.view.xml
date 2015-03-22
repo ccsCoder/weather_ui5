@@ -1,0 +1,25 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="weather.WeatherView" xmlns:sap.ui.layout="sap.ui.layout"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Neo's Weather">
+		<content>
+			<sap.ui.layout:VerticalLayout width="100%">
+				<SearchField id="citySearchField" width="100%"
+					selectOnFocus="true" placeholder="Type City Name." search="doCitySearch" />
+				<ObjectHeader binding="{/}" id="cityObjectHeader1"
+					title="{name}" number="{/main/temp}" numberUnit="C" intro="Weather for"
+					titleActive="true" iconActive="false">
+					<statuses>
+						<ObjectStatus title="Forecast: " text="{/weather/0/description}"
+							state="Success" />
+					</statuses>
+					<attributes>
+						<ObjectAttribute title="Wind Speed" text="{/wind/speed}" />
+						<ObjectAttribute title="Wind Inclination" text="{/wind/deg}" />
+					</attributes>
+				</ObjectHeader>
+			</sap.ui.layout:VerticalLayout>
+		</content>
+	</Page>
+	<BusyDialog id="BusyDialog" />
+</core:View>
